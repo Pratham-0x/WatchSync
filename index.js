@@ -18,11 +18,6 @@ let oldHost = null;
 // Static files from /public
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/proxy-video', async (req, res) => {
-  const response = await fetch('http://cinekwok.com/films/india/Jab-Tak-Hai-Jaan2012.mp4');
-  response.body.pipe(res);
-});
-
 io.on("connection", (socket) => {
   socket.on("joined", ({ name }) => {
     socket.username = name;
